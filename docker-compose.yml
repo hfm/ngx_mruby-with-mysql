@@ -1,0 +1,6 @@
+centos7:
+  dockerfile: Dockerfile
+  build: .
+  command: sh -c 'mkdir -p /tmp/pkgs && cp -a /root/rpmbuild/RPMS/x86_64/nginx-*.rpm /tmp/pkgs'
+  volumes:
+    - .:/tmp:rw
