@@ -12,7 +12,7 @@ RUN rpm -U /tmp/mysql-community-devel-5.7.13-1.el7.x86_64.rpm && rm /tmp/mysql-c
 RUN rpmdev-setuptree
 
 # Get nginx
-ENV NGINX_VERSION 1.11.1
+ENV NGINX_VERSION 1.11.2
 RUN wget -q http://nginx.org/packages/mainline/centos/7/SRPMS/nginx-$NGINX_VERSION-1.el7.ngx.src.rpm -P /tmp
 RUN rpm -U /tmp/nginx-$NGINX_VERSION-1.el7.ngx.src.rpm
 RUN yum-builddep -y -q /tmp/nginx-$NGINX_VERSION-1.el7.ngx.src.rpm
@@ -24,7 +24,7 @@ RUN mkdir /usr/local/src/openssl && \
     tar -xz -C /usr/local/src/openssl --strip=1
 
 # Get ngx_mruby
-ENV NGX_MRUBY_VERSION 1.18.0
+ENV NGX_MRUBY_VERSION 1.18.2
 RUN mkdir /usr/local/src/ngx_mruby && \
     wget -qO- https://github.com/matsumoto-r/ngx_mruby/archive/v$NGX_MRUBY_VERSION.tar.gz | \
     tar -xz -C /usr/local/src/ngx_mruby --strip=1
