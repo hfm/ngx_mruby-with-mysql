@@ -1,7 +1,13 @@
 FROM centos:7
 MAINTAINER hfm.garden@gmail.com
 
-RUN yum -y -q install bison gcc git make rake rpmdevtools wget which mariadb-devel
+RUN yum -y -q install bison gcc git make rake rpmdevtools wget which
+ADD mysql-community-common-5.7.13-1.el7.x86_64.rpm /tmp/mysql-community-common-5.7.13-1.el7.x86_64.rpm
+ADD mysql-community-libs-5.7.13-1.el7.x86_64.rpm /tmp/mysql-community-libs-5.7.13-1.el7.x86_64.rpm
+ADD mysql-community-devel-5.7.13-1.el7.x86_64.rpm /tmp/mysql-community-devel-5.7.13-1.el7.x86_64.rpm
+RUN rpm -U /tmp/mysql-community-common-5.7.13-1.el7.x86_64.rpm && rm /tmp/mysql-community-common-5.7.13-1.el7.x86_64.rpm
+RUN rpm -U /tmp/mysql-community-libs-5.7.13-1.el7.x86_64.rpm && rm /tmp/mysql-community-libs-5.7.13-1.el7.x86_64.rpm
+RUN rpm -U /tmp/mysql-community-devel-5.7.13-1.el7.x86_64.rpm && rm /tmp/mysql-community-devel-5.7.13-1.el7.x86_64.rpm
 
 RUN rpmdev-setuptree
 
